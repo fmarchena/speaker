@@ -1,0 +1,65 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="120" y1="40" x2="1060" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8EE"/>
+      <stop offset="1" stop-color="#EEF6FF"/>
+    </linearGradient>
+    <filter id="shadow3" x="0" y="0" width="1200" height="760" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#1B2C45" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect x="36" y="36" width="1128" height="688" rx="36" fill="url(#bg3)"/>
+  <rect x="36" y="36" width="1128" height="688" rx="36" stroke="#E8EDF4"/>
+
+  <g filter="url(#shadow3)">
+    <rect x="84" y="134" width="270" height="464" rx="34" fill="white"/>
+    <rect x="84" y="134" width="270" height="464" rx="34" stroke="#E7ECF2"/>
+    <text x="219" y="188" text-anchor="middle" fill="#5E6B80" font-size="24" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="800" letter-spacing="3">USUARIO</text>
+    <rect x="126" y="238" width="186" height="150" rx="24" fill="#F5F8FD" stroke="#DCE7F5"/>
+    <rect x="152" y="270" width="134" height="14" rx="7" fill="#9EB3CA"/>
+    <rect x="152" y="298" width="98" height="14" rx="7" fill="#C5D4E2"/>
+    <rect x="152" y="338" width="124" height="22" rx="11" fill="#FFE7D1"/>
+    <text x="214" y="354" text-anchor="middle" fill="#C45500" font-size="15" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="800">grafana.midominio.com</text>
+    <text x="219" y="444" text-anchor="middle" fill="#1C2D48" font-size="28" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Abre el dominio</text>
+  </g>
+
+  <g filter="url(#shadow3)">
+    <rect x="420" y="96" width="348" height="540" rx="38" fill="#FFF4E8"/>
+    <rect x="420" y="96" width="348" height="540" rx="38" stroke="#FFD4AF"/>
+    <text x="594" y="146" text-anchor="middle" fill="#C45500" font-size="26" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="800" letter-spacing="4">CLOUDFLARE ACCESS</text>
+
+    <rect x="474" y="214" width="240" height="112" rx="24" fill="white" stroke="#F3C8A2"/>
+    <text x="594" y="250" text-anchor="middle" fill="#5E6B80" font-size="18" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="800" letter-spacing="2">POLÍTICA</text>
+    <text x="594" y="286" text-anchor="middle" fill="#1C2D48" font-size="28" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Valida identidad</text>
+
+    <rect x="474" y="356" width="240" height="112" rx="24" fill="white" stroke="#F3C8A2"/>
+    <text x="594" y="392" text-anchor="middle" fill="#5E6B80" font-size="18" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="800" letter-spacing="2">MFA / GRUPOS</text>
+    <text x="594" y="428" text-anchor="middle" fill="#1C2D48" font-size="28" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Autoriza acceso</text>
+
+    <rect x="474" y="498" width="240" height="88" rx="24" fill="white" stroke="#F3C8A2"/>
+    <text x="594" y="552" text-anchor="middle" fill="#1C2D48" font-size="26" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Tunnel activo</text>
+  </g>
+
+  <g filter="url(#shadow3)">
+    <rect x="834" y="170" width="284" height="392" rx="36" fill="#F3F8FF"/>
+    <rect x="834" y="170" width="284" height="392" rx="36" stroke="#D8E5F6"/>
+    <text x="976" y="220" text-anchor="middle" fill="#4B83D7" font-size="24" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="800" letter-spacing="3">ORIGEN</text>
+
+    <rect x="882" y="278" width="188" height="194" rx="26" fill="white" stroke="#D4E2F4"/>
+    <text x="976" y="324" text-anchor="middle" fill="#1C2D48" font-size="26" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Grafana</text>
+    <rect x="922" y="348" width="108" height="68" rx="18" fill="#F6F9FE" stroke="#DDE7F4"/>
+    <rect x="944" y="366" width="64" height="8" rx="4" fill="#A0B4CB"/>
+    <rect x="944" y="382" width="42" height="8" rx="4" fill="#CBD8E6"/>
+    <text x="976" y="450" text-anchor="middle" fill="#68778C" font-size="18" font-family="Avenir Next, Segoe UI, sans-serif">10.10.10.30:3000</text>
+  </g>
+
+  <path d="M354 366C386 366 396 366 420 366" stroke="#FF7A1A" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 16"/>
+  <path d="M768 542C800 542 810 542 834 542" stroke="#4B83D7" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 16"/>
+
+  <circle cx="388" cy="366" r="10" fill="#FF7A1A"/>
+  <circle cx="800" cy="542" r="10" fill="#4B83D7"/>
+
+  <text x="388" y="344" text-anchor="middle" fill="#C45500" font-size="20" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Primero valida</text>
+  <text x="800" y="520" text-anchor="middle" fill="#4B83D7" font-size="20" font-family="Avenir Next, Segoe UI, sans-serif" font-weight="700">Luego entrega</text>
+</svg>

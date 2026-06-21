@@ -1,29 +1,56 @@
 ---
-layout: center
+layout: two-cols-header
 ---
 
 <div class="eyebrow">Punto 2</div>
 
 # Arquitectura básica
 
-<p class="lead-copy">
-  Cloudflared Tunnel conecta un servicio interno con Cloudflare mediante una conexión saliente iniciada desde la red on-premise.
-</p>
+::left::
 
-<div class="callout callout--highlight">
-  La arquitectura cambia el punto de exposición: el origen permanece interno y Cloudflare se vuelve la cara pública del acceso.
+<div class="content-stack">
+  <div class="caption">Qué cambia</div>
+
+  <p class="lead-copy">
+    Cloudflared Tunnel conecta un servicio interno con Cloudflare usando una conexión saliente iniciada desde la red on-premise.
+  </p>
+
+  <div class="callout callout--highlight">
+    El origen permanece interno. Cloudflare se convierte en la cara pública del acceso y del control.
+  </div>
+
+  <div class="controls-grid">
+    <span class="control-pill">Origen privado</span>
+    <span class="control-pill">Salida controlada</span>
+    <span class="control-pill">Identidad delante</span>
+  </div>
+</div>
+
+::right::
+
+<div class="architecture-figure-card">
+  <img
+    src="../public/images/architecture-overview.svg"
+    alt="Diagrama general de usuario, Cloudflare y origen on-premise conectado por cloudflared"
+    class="architecture-figure"
+  />
+  <p class="architecture-figure-caption">
+    Vista rápida: el usuario entra por Cloudflare y el origen se conecta hacia afuera con <code>cloudflared</code>.
+  </p>
 </div>
 
 <PreviousSlideButton />
 <NextSlideButton />
 
 ---
-layout: center
+layout: two-cols-header
 ---
 
-<div class="caption">Ruta completa</div>
+<div class="caption">Recorrido completo</div>
 
-# Flujo general
+# Flujo de extremo a extremo
+
+::left::
 
 <pre class="diagram-card"><code>Usuario
    ↓
@@ -44,6 +71,19 @@ Aplicación on-premise</code></pre>
   <span class="control-pill">cloudflared entrega</span>
 </div>
 
+::right::
+
+<div class="list-card">
+  <AnimatedList
+    :items="[
+      'El usuario solo ve el dominio público.',
+      'Cloudflare recibe primero la solicitud.',
+      'Las políticas se aplican antes de tocar el origen.',
+      'El tráfico autorizado baja por el túnel hasta el servicio interno.',
+    ]"
+  />
+</div>
+
 <PreviousSlideButton />
 <NextSlideButton />
 
@@ -52,7 +92,7 @@ layout: two-cols
 ---
 
 <div class="content-stack">
-  <div class="caption">Desde Internet</div>
+  <div class="caption">De cara a Internet</div>
 
   # Lado público
 
@@ -60,9 +100,9 @@ layout: two-cols
     <AnimatedList
       :items="[
         'El usuario accede al dominio publicado.',
-        'Cloudflare recibe primero la solicitud.',
-        'Se aplican controles de seguridad y políticas.',
-        'La petición autorizada viaja hacia el túnel.',
+        'Cloudflare recibe la solicitud primero.',
+        'Puede aplicar DNS, WAF, Access y otras políticas.',
+        'Solo el tráfico válido continúa al túnel.',
       ]"
     />
   </div>
@@ -78,10 +118,10 @@ layout: two-cols
   <div class="list-card">
     <AnimatedList
       :items="[
-        '`cloudflared` mantiene la conexión saliente activa.',
-        'Recibe la solicitud desde Cloudflare.',
-        'La dirige al servicio interno correcto.',
-        'El origen no queda expuesto directamente.',
+        '`cloudflared` mantiene la conexión saliente viva.',
+        'Recibe solicitudes desde Cloudflare.',
+        'Las dirige al servicio interno correcto.',
+        'La IP privada del origen no queda publicada.',
       ]"
     />
   </div>
@@ -91,59 +131,42 @@ layout: two-cols
 <NextSlideButton />
 
 ---
-layout: center
+layout: two-cols-header
 ---
 
-<div class="caption">Inventario mínimo</div>
+<div class="caption">Relación hostname → origen</div>
 
-# Componentes principales
+# Cómo enruta el túnel
 
-<pre class="diagram-card"><code>Dominio público
-Cloudflare DNS
-Cloudflare Access
-Cloudflare Tunnel
-Agente cloudflared
-Servicio interno</code></pre>
-
-<div class="callout">
-  No todos cumplen el mismo rol: unos publican la ruta, otros transportan el tráfico y otros controlan quién puede entrar.
-</div>
-
-<PreviousSlideButton />
-<NextSlideButton />
-
----
-layout: two-cols
----
+::left::
 
 <div class="content-stack">
-  <div class="caption">Resolución pública</div>
+  <div class="callout">
+    El túnel no “expone una red completa”. Expone rutas concretas y cada hostname puede terminar en un destino distinto.
+  </div>
 
-  # Cloudflare DNS
-
-  <p class="lead-copy">
-    Relaciona el dominio público con el punto que Cloudflare usa para llevar la solicitud al túnel.
-  </p>
-
-  <pre class="diagram-card"><code>app.midominio.com
-grafana.midominio.com
-api.midominio.com</code></pre>
+  <div class="list-card">
+    <AnimatedList
+      :items="[
+        'Un dominio público apunta a una intención de acceso.',
+        'El túnel decide a qué servicio interno mandar esa solicitud.',
+        'Eso permite publicar varias apps sin abrir varios puertos.',
+      ]"
+    />
+  </div>
 </div>
 
 ::right::
 
-<div class="content-stack">
-  <div class="caption">Ruta al origen</div>
-
-  # Cloudflare Tunnel
-
-  <p class="lead-copy">
-    Define qué hostname debe terminar en qué servicio interno.
+<div class="architecture-figure-card">
+  <img
+    src="../public/images/tunnel-routing-example.svg"
+    alt="Ejemplo de hostnames públicos mapeados por Cloudflare Tunnel a varios servicios internos"
+    class="architecture-figure"
+  />
+  <p class="architecture-figure-caption">
+    Ejemplo: distintos hostnames terminan en distintos orígenes internos.
   </p>
-
-  <pre class="diagram-card"><code>app.midominio.com
-        ↓
-http://192.168.1.50:8080</code></pre>
 </div>
 
 <PreviousSlideButton />
@@ -156,15 +179,15 @@ layout: two-cols
 <div class="content-stack">
   <div class="caption">Agente on-premise</div>
 
-  # cloudflared
+  # Qué hace `cloudflared`
 
   <div class="list-card">
     <AnimatedList
       :items="[
         'Mantiene la conexión con Cloudflare.',
-        'Recibe solicitudes del túnel.',
-        'Envía tráfico al servicio interno.',
-        'Reporta estado y errores operativos.',
+        'Recibe tráfico del túnel.',
+        'Lo entrega al servicio interno configurado.',
+        'Reporta estado, errores y salud operativa.',
       ]"
     />
   </div>
@@ -173,9 +196,9 @@ layout: two-cols
 ::right::
 
 <div class="content-stack">
-  <div class="caption">Destino final</div>
+  <div class="caption">Qué puede publicar</div>
 
-  # Servicio interno
+  # Tipos de servicios
 
   <pre class="diagram-card"><code>Aplicación web
 API
@@ -186,7 +209,7 @@ RDP
 Servidor interno</code></pre>
 
   <div class="callout">
-    El túnel no está limitado a una sola app web: puede servir distintos tipos de servicios según el caso de uso.
+    El patrón es el mismo: hostname público adelante, servicio privado atrás.
   </div>
 </div>
 
@@ -206,34 +229,7 @@ layout: center
 Cloudflare</code></pre>
 
 <div class="callout callout--highlight">
-  No es Cloudflare quien abre una conexión entrante directa hacia la red interna. El origen es quien sale primero.
-</div>
-
-<PreviousSlideButton />
-<NextSlideButton />
-
----
-layout: center
----
-
-<div class="caption">Caso simple</div>
-
-# Ejemplo práctico
-
-<pre class="diagram-card"><code>Usuario
-   ↓
-https://grafana.midominio.com
-   ↓
-Cloudflare Access
-   ↓
-Cloudflare Tunnel
-   ↓
-cloudflared
-   ↓
-http://10.10.10.30:3000</code></pre>
-
-<div class="callout">
-  Para el usuario hay un dominio público y controlado. Para la red interna sigue existiendo un servicio privado sin exponer su IP directamente.
+  No es Cloudflare quien abre una conexión entrante hacia la red interna. El origen sale primero y mantiene esa relación viva.
 </div>
 
 <PreviousSlideButton />
@@ -243,23 +239,67 @@ http://10.10.10.30:3000</code></pre>
 layout: two-cols-header
 ---
 
-<div class="caption">Control de acceso</div>
+<div class="caption">Caso realista</div>
 
-# Sin Access vs Con Access
+# Ejemplo práctico: Grafana interno
+
+::left::
+
+<div class="content-stack">
+  <pre class="diagram-card"><code>Usuario
+   ↓
+grafana.midominio.com
+   ↓
+Cloudflare Access
+   ↓
+Cloudflare Tunnel
+   ↓
+cloudflared
+   ↓
+10.10.10.30:3000</code></pre>
+
+  <div class="callout">
+    El usuario entra por un dominio controlado. El servidor interno sigue siendo privado y solo recibe tráfico que ya pasó los controles.
+  </div>
+</div>
+
+::right::
+
+<div class="architecture-figure-card">
+  <img
+    src="../public/images/access-grafana-example.svg"
+    alt="Ejemplo visual de acceso a Grafana interno pasando primero por Cloudflare Access y luego por el túnel"
+    class="architecture-figure"
+  />
+  <p class="architecture-figure-caption">
+    Access valida primero; Tunnel entrega después.
+  </p>
+</div>
+
+<PreviousSlideButton />
+<NextSlideButton />
+
+---
+layout: two-cols-header
+---
+
+<div class="caption">Distinción importante</div>
+
+# Tunnel vs Access
 
 ::left::
 
 <div class="comparison-card">
-  <h2>Sin Access</h2>
+  <h2>Tunnel</h2>
   <p class="lead-copy">
-    El túnel publica el servicio, pero el control de identidad no existe por sí solo.
+    Se encarga de transportar el tráfico entre Cloudflare y el origen interno.
   </p>
   <div class="list-card">
     <AnimatedList
       :items="[
-        'El servicio queda accesible por hostname.',
-        'Cualquiera podría intentar entrar.',
-        'La protección depende de controles externos o del propio servicio.',
+        'Conecta el servicio.',
+        'Evita abrir puertos entrantes.',
+        'Resuelve cómo llegar al origen interno.',
       ]"
     />
   </div>
@@ -268,42 +308,19 @@ layout: two-cols-header
 ::right::
 
 <div class="comparison-card comparison-card--after">
-  <h2>Con Access</h2>
+  <h2>Access</h2>
+  <p class="lead-copy">
+    Se encarga de decidir quién puede pasar antes de tocar el servicio.
+  </p>
   <div class="list-card">
     <AnimatedList
       :items="[
-        'Se valida identidad antes de llegar al origen.',
-        'Se puede exigir MFA.',
-        'Se filtra por grupos, correos o políticas.',
-        'Solo entra quien está autorizado.',
+        'Valida identidad.',
+        'Puede exigir MFA.',
+        'Filtra por grupos, correos o políticas.',
       ]"
     />
   </div>
-</div>
-
-<PreviousSlideButton />
-<NextSlideButton />
-
----
-layout: center
----
-
-<div class="eyebrow">Distinción clave</div>
-
-# Idea importante
-
-<div class="architecture-emphasis-stack">
-  <div class="architecture-emphasis-card">
-    <span class="architecture-emphasis-label">Transporte</span>
-    <strong>Cloudflared Tunnel transporta el tráfico.</strong>
-  </div>
-
-  <div class="architecture-emphasis-card architecture-emphasis-card--accent">
-    <span class="architecture-emphasis-label">Control</span>
-    <strong>Cloudflare Access controla quién puede entrar.</strong>
-  </div>
-
-  <p class="architecture-emphasis-note">No son lo mismo.</p>
 </div>
 
 <PreviousSlideButton />
@@ -321,7 +338,7 @@ layout: center
 Access  → controla el acceso</code></pre>
 
 <div class="callout callout--highlight">
-  El valor real aparece cuando ambos trabajan juntos: Tunnel para publicar sin abrir puertos y Access para decidir quién entra.
+  El valor aparece cuando ambos trabajan juntos: Tunnel para publicar sin exponer el origen y Access para decidir quién entra.
 </div>
 
 <PreviousSlideButton />

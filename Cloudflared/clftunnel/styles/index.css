@@ -755,6 +755,35 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
+.architecture-figure-card {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 248, 252, 0.9));
+  padding: 0.85rem;
+  box-shadow:
+    0 18px 38px rgba(27, 44, 69, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.architecture-figure {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+}
+
+.architecture-figure-caption {
+  margin: 0.75rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--cloud-muted);
+}
+
+.architecture-figure-caption code {
+  color: var(--cloud-ink);
+}
+
 .architecture-emphasis-stack {
   display: grid;
   justify-items: center;
