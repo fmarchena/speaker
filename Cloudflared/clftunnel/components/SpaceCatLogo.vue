@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import logoSrc from '../public/images/PurpleSpace_Academy_transparente.png'
-
-defineProps<{
+const props = defineProps<{
   size?: string
 }>()
+
+const logoSrc = '/images/PurpleSpace_Academy_transparente.png'
 </script>
 
 <template>
   <div
     class="space-cat-logo"
-    :style="{ '--logo-size': size ?? '3rem' }"
+    :style="{ '--logo-size': props.size ?? '6.25rem' }"
     aria-hidden="true"
   >
     <div class="space-cat-stars">
@@ -29,8 +29,8 @@ defineProps<{
 <style scoped>
 .space-cat-logo {
   position: fixed;
-  left: 1rem;
-  bottom: 0.9rem;
+  left: 0.65rem;
+  bottom: 0.55rem;
   z-index: 35;
   width: var(--logo-size);
   pointer-events: none;
@@ -77,9 +77,9 @@ defineProps<{
 
 .space-cat-image {
   display: block;
-  width: 100%;
+  width: 50%;
   height: auto;
-  filter: drop-shadow(0 12px 24px rgba(32, 38, 73, 0.18));
+  filter: drop-shadow(0 12px 24px rgba(32, 38, 73, 0.2));
   animation: cat-tilt 5.2s ease-in-out infinite;
   transform-origin: 50% 72%;
 }

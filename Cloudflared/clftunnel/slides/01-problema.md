@@ -126,8 +126,8 @@ layout: center
 # Señales de mala exposición
  
 
-<div class="meme-grid">
-  <div class="meme-card meme-card--compact">
+<div class="meme-grid meme-grid--duo">
+  <div class="meme-card">
     <img
       src="../public/images/this-is-fine.jpg"
       alt="Meme This Is Fine"
@@ -139,19 +139,7 @@ layout: center
     </div>
   </div>
 
-  <div class="meme-card meme-card--compact">
-    <img
-      src="../public/images/same-picture.jpg"
-      alt="Meme They're The Same Picture"
-      class="meme-image"
-    />
-    <div class="meme-caption">
-      <p class="meme-title">Staging tratado como producción</p>
-      <p class="meme-note">Cuando prueba y producción cambian de nombre, pero en exposición terminan siendo lo mismo.</p>
-    </div>
-  </div>
-
-  <div class="meme-card meme-card--compact">
+  <div class="meme-card">
     <img
       src="../public/images/charlie-conspiracy.jpg"
       alt="Meme Charlie Conspiracy"
@@ -163,17 +151,6 @@ layout: center
     </div>
   </div>
 
-  <div class="meme-card meme-card--compact">
-    <img
-      src="../public/images/oprah-you-get-a.jpg"
-      alt="Meme Oprah You Get A"
-      class="meme-image"
-    />
-    <div class="meme-caption">
-      <p class="meme-title">Aplicación interna accesible desde cualquier lugar</p>
-      <p class="meme-note">“Tú accedes, tú accedes, todos acceden”, justo lo contrario a segmentar.</p>
-    </div>
-  </div>
 </div>
 
 <PreviousSlideButton />
