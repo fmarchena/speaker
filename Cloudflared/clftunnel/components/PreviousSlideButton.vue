@@ -6,12 +6,12 @@ const { $nav } = useSlideContext()
 const isBursting = ref(false)
 
 const particles = [
-  { id: 1, x: '16px', y: '-20px', delay: '0ms', size: '4px' },
-  { id: 2, x: '28px', y: '-8px', delay: '35ms', size: '3px' },
-  { id: 3, x: '24px', y: '14px', delay: '55ms', size: '4px' },
-  { id: 4, x: '8px', y: '24px', delay: '20ms', size: '3px' },
-  { id: 5, x: '-12px', y: '18px', delay: '45ms', size: '4px' },
-  { id: 6, x: '-18px', y: '-10px', delay: '10ms', size: '3px' },
+  { id: 1, x: '-16px', y: '-20px', delay: '0ms', size: '4px' },
+  { id: 2, x: '-28px', y: '-8px', delay: '35ms', size: '3px' },
+  { id: 3, x: '-24px', y: '14px', delay: '55ms', size: '4px' },
+  { id: 4, x: '-8px', y: '24px', delay: '20ms', size: '3px' },
+  { id: 5, x: '12px', y: '18px', delay: '45ms', size: '4px' },
+  { id: 6, x: '18px', y: '-10px', delay: '10ms', size: '3px' },
 ]
 
 function handleClick() {
@@ -21,7 +21,7 @@ function handleClick() {
   isBursting.value = true
 
   window.setTimeout(() => {
-    $nav.value.next()
+    $nav.value.prev()
   }, 180)
 
   window.setTimeout(() => {
@@ -35,11 +35,11 @@ function handleClick() {
     v-motion
     :initial="{ opacity: 0, scale: 0.9, y: 6 }"
     :enter="{ opacity: 1, scale: 1 }"
-    :hovered="{ scale: 1.03, rotate: 1 }"
+    :hovered="{ scale: 1.03, rotate: -1 }"
     type="button"
     :class="{ 'is-bursting': isBursting }"
     class="
-      nav-cat group fixed right-5 top-5
+      nav-cat group fixed left-5 top-5
       flex h-7 w-7 items-center justify-center
       cursor-pointer
       overflow-visible
@@ -55,8 +55,8 @@ function handleClick() {
       hover:text-orange-500
       hover:shadow-md
     "
-    title="Siguiente diapositiva"
-    aria-label="Siguiente diapositiva"
+    title="Diapositiva anterior"
+    aria-label="Diapositiva anterior"
     @click="handleClick"
   >
     <span class="particle-layer" aria-hidden="true">
@@ -75,7 +75,7 @@ function handleClick() {
 
     <svg
       viewBox="0 0 24 24"
-      class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:rotate-1"
+      class="h-4 w-4 -scale-x-100 transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:-rotate-1"
       fill="none"
       stroke="currentColor"
       stroke-width="1.6"
