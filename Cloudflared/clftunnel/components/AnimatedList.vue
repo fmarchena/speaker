@@ -4,10 +4,12 @@ withDefaults(defineProps<{
   class?: string
   baseDelay?: number
   stepDelay?: number
+  duration?: number
 }>(), {
   class: 'feature-list',
   baseDelay: 60,
   stepDelay: 70,
+  duration: 420,
 })
 </script>
 
@@ -23,7 +25,7 @@ withDefaults(defineProps<{
         y: 0,
         transition: {
           delay: baseDelay + index * stepDelay,
-          duration: 420,
+          duration,
         },
       }"
     >

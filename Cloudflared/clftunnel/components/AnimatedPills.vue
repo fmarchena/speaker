@@ -5,11 +5,13 @@ withDefaults(defineProps<{
   itemClass?: string
   baseDelay?: number
   stepDelay?: number
+  duration?: number
 }>(), {
   class: 'controls-grid',
   itemClass: 'control-pill',
   baseDelay: 60,
   stepDelay: 170,
+  duration: 820,
 })
 </script>
 
@@ -25,7 +27,7 @@ withDefaults(defineProps<{
         y: 0,
         transition: {
           delay: baseDelay + index * stepDelay,
-          duration: 820,
+          duration,
         },
       }"
       :class="itemClass"

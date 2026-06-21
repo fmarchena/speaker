@@ -101,6 +101,9 @@ layout: two-cols
 
 <div class="list-card">
   <AnimatedList
+    :duration="820"
+    :base-delay="100"
+    :step-delay="220"
     :items="[
       'Puertos temporales que nunca se cierran.',
       'Paneles internos publicados sin MFA.',
