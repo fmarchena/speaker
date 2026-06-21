@@ -599,6 +599,335 @@
   color: var(--cloud-ink);
 }
 
+/* Architecture slides: keep key messages legible over the warm canvas. */
+.architecture-highlight {
+  border-color: rgba(154, 65, 0, 0.28);
+  border-left-color: #c45500;
+  background:
+    linear-gradient(135deg, rgba(255, 232, 208, 0.98), rgba(255, 244, 230, 0.98));
+  box-shadow:
+    0 18px 40px rgba(122, 58, 12, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  color: #12243c;
+  font-weight: 650;
+}
+
+/* Keep the architecture chapter airy while reserving the stage for diagrams. */
+.architecture-slide {
+  column-gap: 1.35rem;
+}
+
+.two-cols-header.architecture-slide--visual {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+}
+
+.architecture-slide .col-header {
+  margin-bottom: 0.35rem;
+}
+
+.architecture-slide h1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1rem, 2vw, 1.52rem);
+}
+
+.architecture-slide h2 {
+  margin-bottom: 0.55rem;
+  font-size: 1.08rem;
+}
+
+.architecture-slide p,
+.architecture-slide li,
+.architecture-slide blockquote {
+  font-size: 0.82rem;
+  line-height: 1.38;
+}
+
+.architecture-slide .content-stack {
+  gap: 0.58rem;
+}
+
+.architecture-slide .caption {
+  margin-bottom: 0.3rem;
+}
+
+.architecture-slide .lead-copy {
+  margin-top: 0.28rem;
+  font-size: 0.8rem;
+  line-height: 1.38;
+}
+
+.architecture-slide .callout {
+  margin-top: 0.45rem;
+  padding: 0.66rem 0.8rem;
+  font-size: 0.8rem;
+  line-height: 1.38;
+}
+
+.architecture-slide .list-card {
+  padding: 0.68rem 0.78rem;
+}
+
+.architecture-slide .feature-list {
+  gap: 0.42rem;
+}
+
+.architecture-slide .controls-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+.architecture-slide .control-pill {
+  padding: 0.28rem 0.55rem;
+  font-size: 0.7rem;
+}
+
+.architecture-slide .diagram-card {
+  padding: 0.82rem 0.95rem;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.architecture-slide .architecture-figure-card {
+  padding: 0.65rem;
+}
+
+.architecture-slide .architecture-figure-caption {
+  margin-top: 0.48rem;
+  font-size: 0.65rem;
+  line-height: 1.25;
+}
+
+.architecture-slide--center .diagram-card {
+  min-width: 24rem;
+  text-align: center;
+}
+
+.architecture-slide--center .architecture-highlight {
+  margin-top: 0.7rem;
+}
+
+.cloudflared-definition {
+  border: 1px solid rgba(196, 85, 0, 0.24);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255, 235, 214, 0.96), rgba(255, 248, 239, 0.94));
+  padding: 0.85rem 0.95rem;
+  box-shadow: 0 16px 34px rgba(122, 58, 12, 0.1);
+}
+
+.cloudflared-definition__name {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: #c45500;
+  font-family: "SFMono-Regular", "Menlo", "Monaco", monospace;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.cloudflared-definition p {
+  margin: 0;
+  color: var(--cloud-ink);
+}
+
+.architecture-slide--definition .diagram-card--definition {
+  width: 100%;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.48;
+}
+
+.architecture-definition-note {
+  margin-top: 0.65rem;
+}
+
+.architecture-slide--components {
+  align-content: start;
+}
+
+.architecture-slide--components > .diagram-zoom {
+  max-width: 58rem;
+  margin: 0.25rem auto 0;
+}
+
+.architecture-component-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(241, 246, 252, 0.92));
+  padding: 0.72rem;
+  box-shadow: 0 18px 38px rgba(27, 44, 69, 0.1);
+}
+
+.architecture-component-node {
+  position: relative;
+  display: grid;
+  align-content: center;
+  min-height: 4.4rem;
+  border: 1px solid rgba(33, 79, 141, 0.18);
+  border-radius: 17px;
+  background: rgba(245, 249, 255, 0.96);
+  padding: 0.55rem 0.62rem 0.5rem;
+  text-align: left;
+}
+
+.architecture-component-node:nth-of-type(4) {
+  grid-column: 5;
+  grid-row: 3;
+}
+
+.architecture-component-node:nth-of-type(5) {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.architecture-component-node:nth-of-type(6) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.architecture-component-node--security {
+  border-color: rgba(196, 85, 0, 0.28);
+  background: rgba(255, 239, 222, 0.96);
+}
+
+.architecture-component-node--agent {
+  border-color: rgba(196, 85, 0, 0.34);
+  background: linear-gradient(145deg, #ffe1c3, #fff1e2);
+}
+
+.architecture-component-node--origin {
+  border-color: rgba(47, 112, 82, 0.24);
+  background: rgba(237, 249, 242, 0.96);
+}
+
+.architecture-component-node__step {
+  position: absolute;
+  top: 0.38rem;
+  right: 0.45rem;
+  display: grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  background: var(--cloud-ink);
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 800;
+}
+
+.architecture-component-node strong {
+  padding-right: 1.1rem;
+  color: var(--cloud-ink);
+  font-size: 0.76rem;
+  line-height: 1.15;
+}
+
+.architecture-component-node small {
+  margin-top: 0.25rem;
+  color: var(--cloud-muted);
+  font-size: 0.62rem;
+  line-height: 1.22;
+}
+
+.architecture-component-arrow {
+  color: #d85f00;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.architecture-component-arrow--down {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+.architecture-component-arrow--reverse-right {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+.architecture-component-arrow--reverse-left {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.architecture-component-summary {
+  max-width: 52rem;
+  margin: 0.58rem auto 0;
+  color: var(--cloud-muted);
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.architecture-component-summary code {
+  color: #c45500;
+  font-weight: 800;
+}
+
+.architecture-route-example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(245, 248, 252, 0.92));
+  padding: 0.72rem;
+  box-shadow: 0 16px 34px rgba(27, 44, 69, 0.08);
+}
+
+.architecture-route-example > div {
+  display: grid;
+  gap: 0.24rem;
+  min-width: 0;
+}
+
+.architecture-route-example span:not(.architecture-route-example__arrow) {
+  color: var(--cloud-muted);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.architecture-route-example strong {
+  overflow-wrap: anywhere;
+  color: var(--cloud-ink);
+  font-family: "SFMono-Regular", "Menlo", "Monaco", monospace;
+  font-size: 0.68rem;
+  line-height: 1.25;
+}
+
+.architecture-route-example__arrow {
+  color: #d85f00;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.slidev-layout h1 code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #d85f00;
+  font-weight: 700;
+}
+
+.architecture-figure-caption code {
+  border: 1px solid #b94d00;
+  border-radius: 0.32em;
+  background: #c45500;
+  padding: 0.04em 0.28em;
+  color: #fffaf3;
+  font-weight: 700;
+}
+
 .list-card {
   padding: 0.95rem 1rem;
 }
@@ -832,4 +1161,7 @@
   font-size: 0.94rem;
   font-weight: 700;
   color: var(--cloud-muted);
+}
+#slidev-goto-dialog {
+  display: none !important;
 }
