@@ -86,7 +86,7 @@ layoutClass: architecture-slide architecture-slide--visual
 <DiagramZoom label="Ampliar arquitectura básica">
   <div class="architecture-figure-card">
     <img
-      src="../public/images/architecture-overview.svg"
+      src="/images/architecture-overview.svg"
       alt="Diagrama general de usuario, Cloudflare y origen on-premise conectado por cloudflared"
       class="architecture-figure"
     />
@@ -195,7 +195,7 @@ layoutClass: architecture-slide architecture-slide--visual
 <DiagramZoom label="Ampliar diagrama de enrutamiento">
   <div class="architecture-figure-card">
     <img
-      src="../public/images/tunnel-routing-example.svg"
+      src="/images/tunnel-routing-example.svg"
       alt="Ejemplo de hostnames públicos mapeados por Cloudflare Tunnel a varios servicios internos"
       class="architecture-figure"
     />
@@ -244,7 +244,7 @@ layoutClass: architecture-slide architecture-slide--visual
 <DiagramZoom label="Ampliar arquitectura de acceso a Grafana">
   <div class="architecture-figure-card">
     <img
-      src="../public/images/access-grafana-example.svg"
+      src="/images/access-grafana-example.svg"
       alt="Ejemplo visual de acceso a Grafana interno pasando primero por Cloudflare Access y luego por el túnel"
       class="architecture-figure"
     />

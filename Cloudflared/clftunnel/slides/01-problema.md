@@ -129,7 +129,7 @@ layout: center
 <div class="meme-grid meme-grid--duo">
   <div class="meme-card">
     <img
-      src="../public/images/this-is-fine.jpg"
+      src="/images/this-is-fine.jpg"
       alt="Meme This Is Fine"
       class="meme-image"
     />
@@ -141,7 +141,7 @@ layout: center
 
   <div class="meme-card">
     <img
-      src="../public/images/charlie-conspiracy.jpg"
+      src="/images/charlie-conspiracy.jpg"
       alt="Meme Charlie Conspiracy"
       class="meme-image"
     />

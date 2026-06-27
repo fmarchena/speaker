@@ -717,6 +717,18 @@
   box-shadow: 0 16px 34px rgba(122, 58, 12, 0.1);
 }
 
+.cloudflare-company-definition {
+  border-color: rgba(33, 79, 141, 0.18);
+  background: linear-gradient(145deg, rgba(240, 246, 255, 0.96), rgba(251, 253, 255, 0.94));
+  box-shadow: 0 16px 34px rgba(27, 44, 69, 0.08);
+}
+
+.cloudflare-company-definition .cloudflared-definition__name {
+  color: #214f8d;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  letter-spacing: -0.03em;
+}
+
 .cloudflared-definition__name {
   display: inline-block;
   margin-bottom: 0.35rem;
